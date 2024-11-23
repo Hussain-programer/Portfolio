@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Nuskha-e-Zaiqa - Recipe Finder, a web application that allows users to search and discover new recipes based on ingredients, names, or IDs.">
+    <title>Nuskha-e-Zaiqa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Nuskha-e-Zaiqa</h1>
+        </header>
+        <div class="search-options">
+            <button class="search-type-btn active" data-type="ingredient">Search by Ingredient</button>
+            <button class="search-type-btn" data-type="name">Search by Name</button>
+            <button class="search-type-btn" data-type="id">Search by ID</button>
+            <button class="search-type-btn random-btn" onclick="getRandomRecipe()">Random Recipe</button>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter search term...">
+            <div class="search-suggestions" id="searchSuggestions"></div>
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="filters">
+            <button class="filter-btn active" onclick="toggleView('all')">All Recipes</button>
+            <button class="filter-btn" onclick="toggleView('favorites')">Favorites</button>
+        </div>
+
+        <div class="loading" id="loading">Scanning Universal Recipe Database...</div>
+        <div class="recipes-grid" id="recipesGrid"></div>
+    </div>
+
+    <div class="modal" id="recipeModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>

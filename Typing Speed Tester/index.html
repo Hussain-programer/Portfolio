@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description" content="Quantum Type-X 2050: A futuristic typing game that challenges your speed and accuracy in a neon-lit, cyberpunk world.">
+    <title>Type-X: A Futuristic Typing Game</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="hologram"></div>
+    <div class="container">
+        <h1>TYPE-X</h1>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">WPM</div>
+                <div class="stat-value" id="wpm">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">ACCURACY</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">TIME</div>
+                <div class="stat-value" id="time">60</div>
+            </div>
+        </div>
+
+        <div id="text-display"></div>
+        <input type="text" id="input-field" placeholder="Start typing to begin..." autocomplete="off">
+        <button id="restart-btn">RESET SIMULATION</button>
+    </div>
+
+    <script src="script.js"> </script>
+</body>
+</html>

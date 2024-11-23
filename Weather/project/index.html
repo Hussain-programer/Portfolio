@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A cyberpunk-themed weather application providing current weather conditions, 24-hour forecast, 5-day forecast, and air quality information.">
+    <title>Cyberpunk Weather</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cyber Weather</h1>
+        <div class="search-box">
+            <input type="text" id="location-input" placeholder="Enter location..." class="search-input">
+            <button onclick="searchLocation()" class="search-btn">Search</button>
+        </div>
+        <div id="weather-display">
+            <div class="loading">Initializing systems...</div>
+        </div>
+        <div id="forecast-display" class="hidden">
+            <div class="section-title">24-Hour Forecast</div>
+            <div class="hourly-forecast" id="hourly-forecast"></div>
+            
+            <div class="section-title">5-Day Forecast</div>
+            <div class="daily-forecast" id="daily-forecast"></div>
+            
+            <div class="section-title">Air Quality</div>
+            <div class="extra-info" id="extra-info"></div>
+        </div>
+    </div>
+    <script src="config.js"></script>
+    <script src="weatherService.js"></script>
+    <script src="uiService.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
