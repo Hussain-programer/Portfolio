@@ -1,4 +1,4 @@
-const apiKey = "cf007fdd"; // Your correct API key
+const apiKey = "Your API "; // Your correct API key
       const searchInput = document.getElementById("searchInput");
       const searchBtn = document.getElementById("searchBtn");
       const movieGrid = document.getElementById("movieGrid");
