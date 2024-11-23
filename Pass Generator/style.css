@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #0f0f23;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, #ff00ff 25%, transparent 25%) -10px 0,
+        linear-gradient(-45deg, #ff00ff 25%, transparent 25%) -10px 0,
+        linear-gradient(45deg, transparent 75%, #ff00ff 75%) -10px 0,
+        linear-gradient(-45deg, transparent 75%, #ff00ff 75%) -10px 0;
+    background-size: 20px 20px;
+    opacity: 0.03;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+.container {
+    width: 480px;
+    background: rgba(20, 20, 45, 0.95);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.2),
+        inset 0 0 15px rgba(0, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 50px,
+        rgba(0, 255, 255, 0.03) 50px,
+        rgba(0, 255, 255, 0.03) 51px
+    );
+    transform: rotate(45deg);
+    animation: scanline 4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(-5%) rotate(45deg); }
+    100% { transform: translateY(5%) rotate(45deg); }
+}
+
+.container h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 1.2rem 1.75rem;
+    border-bottom: 2px solid rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, 
+        rgba(0, 255, 255, 0.1) 0%,
+        rgba(0, 255, 255, 0.05) 100%);
+    text-align: center;
+}
+
+.wrapper {
+    margin: 1.5rem 1.75rem;
+    position: relative;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-box input {
+    width: 100%;
+    height: 60px;
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.05);
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    border: 2px solid rgba(0, 255, 255, 0.2);
+    padding: 0 3rem 0 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: #00ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.input-box span {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #00ffff;
+    transition: all 0.3s ease;
+}
+
+.input-box span:hover {
+    color: #ff00ff;
+    text-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.pass-indicator {
+    width: 100%;
+    height: 5px;
+    position: relative;
+    margin: 0.75rem 0 1.5rem;
+    border-radius: 25px;
+    background: rgba(0, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.pass-indicator::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 50%;
+    border-radius: inherit;
+    transition: all 0.3s ease;
+}
+
+.pass-indicator#weak::before {
+    width: 20%;
+    background: linear-gradient(90deg, #ff0055, #ff0088);
+    box-shadow: 0 0 15px #ff0055;
+}
+
+.pass-indicator#medium::before {
+    width: 50%;
+    background: linear-gradient(90deg, #ffaa00, #ffcc00);
+    box-shadow: 0 0 15px #ffaa00;
+}
+
+.pass-indicator#strong::before {
+    width: 100%;
+    background: linear-gradient(90deg, #00ffaa, #00ff88);
+    box-shadow: 0 0 15px #00ffaa;
+}
+
+.pass-length .details {
+    display: flex;
+    justify-content: space-between;
+    color: #00ffff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.pass-length input[type="range"] {
+    width: 100%;
+    height: 6px;
+    accent-color: #00ffff;
+    cursor: pointer;
+}
+
+.pass-settings .title {
+    color: #00ffff;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.pass-settings .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.options .option {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.options .option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #00ffff;
+    cursor: pointer;
+}
+
+.options .option label {
+    color: rgba(0, 255, 255, 0.9);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.generate-btn {
+    width: 100%;
+    height: 60px;
+    color: #000;
+    background: linear-gradient(90deg, #00ffff, #00ccff);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-transform: uppercase;
+    margin: 1.5rem 0;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.generate-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.generate-btn:hover {
+    background: linear-gradient(90deg, #ff00ff, #ff66ff);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 255, 0.3);
+}
+
+.generate-btn:hover::before {
+    left: 100%;
+}
+
+/* Disable first checkbox styling */
+.options .option:first-child {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+    .container {
+        width: 95%;
+        margin: 0 10px;
+    }
+    
+    .pass-settings .options {
+        grid-template-columns: 1fr;
+    }
+}

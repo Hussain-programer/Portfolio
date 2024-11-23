@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Koun Banayga Crorepati - A quiz game where you can test your knowledge and win virtual credits."
+    />
+    <link rel="shortcut icon" href="./fav/fire-png-image-pngfre-27.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Koun Banayga Crorepati</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="game-title">Koun Banayga Crorepati</h1>
+        <div class="timer">30</div>
+        <div class="lifelines">
+            <button class="lifeline" id="fifty-fifty">50:50</button>
+            <button class="lifeline" id="audience-poll">Audience Poll</button>
+            <button class="lifeline" id="expert-advice">Expert AI</button>
+        </div>
+        <div class="question-container">
+            <div class="question"></div>
+            <div class="options-grid"></div>
+        </div>
+        <div class="game-controls">
+            <button class="quit-btn" id="quitGame">Quit Game</button>
+        </div>
+    </div>
+
+    <div class="prize-pool"></div>
+
+    <div class="modal" id="startModal">
+        <div class="modal-content">
+            <h2>Welcome to Koun Banayga Crorepati</h2>
+            <p>Get ready to test your knowledge and win exciting virtual credits!</p>
+            <button class="start-btn">Start Game</button>
+        </div>
+    </div>
+
+    <div class="modal" id="quitModal">
+        <div class="modal-content">
+            <h2>Are you sure you want to quit?</h2>
+            <p>Your current winning amount: <span id="currentWinnings"></span></p>
+            <div class="modal-buttons">
+                <button class="modal-btn continue-btn">Continue Playing</button>
+                <button class="modal-btn quit-confirm-btn">Quit & Take Money</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

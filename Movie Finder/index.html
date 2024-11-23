@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StellarCinema - Explore the vast archives of early century cinema, from 2000 to 2027. Discover classic movies, read reviews, and learn about the history of cinema."
+    />
+    <link rel="stylesheet" href="style.css">
+      <title>StellarCinema</title>
+   
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">StellarCinema</h1>
+        <p class="subtitle">Early Century Cinema Archive</p>
+        <div class="era-badge">Featured Era: 2000-2027</div>
+      </header>
+
+      <div class="filter-container">
+        <button class="era-filter" data-era="2000-2010">2000s</button>
+        <button class="era-filter" data-era="2011-2020">2010s</button>
+        <button class="era-filter active" data-era="2021-2027">2020s</button>
+      </div>
+
+      <div class="search-container">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search classic movies (2000-2027)..."
+          id="searchInput"
+        />
+        <button class="search-btn" id="searchBtn">Search</button>
+      </div>
+
+      <div class="loading" id="loading">Accessing temporal archives...</div>
+
+      <div class="movie-grid" id="movieGrid"></div>
+    </div>
+    <button class="help-btn" id="helpBtn">?</button>
+
+    <div class="modal-overlay" id="instructionsModal">
+      <div class="modal">
+        <button
+          class="close-modal"
+          id="closeModal"
+          aria-label="Close instructions"
+        >
+          ×
+        </button>
+        <div class="modal-header">
+          <h2 class="modal-title">StellarCinema</h2>
+          <p class="subtitle">Interface Guide</p>
+        </div>
+
+        <div class="instruction-step">
+          <span class="step-number">01 // Era Selection</span>
+          <p class="step-content">
+            Choose your preferred time period using the era filters:
+          </p>
+          <ul class="feature-list">
+            <li class="feature-item">2000s: Early Digital Age</li>
+            <li class="feature-item">2010s: Streaming Revolution</li>
+            <li class="feature-item">2020s: Neo-Cinema Era</li>
+          </ul>
+        </div>
+
+        <div class="instruction-step">
+          <span class="step-number">02 // Search Function</span>
+          <p class="step-content">
+            Input your search query in the temporal database:
+          </p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              Enter movie titles, actors, or keywords
+            </li>
+            <li class="feature-item">
+              Results automatically filter by selected era
+            </li>
+            <li class="feature-item">
+              Press Enter or click Search to initiate
+            </li>
+          </ul>
+        </div>
+
+        <div class="instruction-step">
+          <span class="step-number">03 // Movie Information</span>
+          <p class="step-content">Each movie card displays:</p>
+          <ul class="feature-list">
+            <li class="feature-item">Historical classification tag</li>
+            <li class="feature-item">Original release year (CE)</li>
+            <li class="feature-item">Temporal rating metrics</li>
+            <li class="feature-item">Historical plot synopsis</li>
+          </ul>
+        </div>
+
+        <div class="instruction-step">
+          <span class="step-number">04 // Navigation Tips</span>
+          <p class="step-content">Additional features:</p>
+          <ul class="feature-list">
+            <li class="feature-item">Hover over cards for enhanced view</li>
+            <li class="feature-item">
+              Click era filters to quickly switch periods
+            </li>
+            <li class="feature-item">
+              Access this guide anytime via the help button
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
