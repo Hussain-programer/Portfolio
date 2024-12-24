@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - The Cozy Corner</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #2D3250;
+            --secondary-color: #424769;
+            --accent-color: #7077A1;
+            --text-color: #333;
+            --background-light: #F6F6F6;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            transition: color var(--transition-speed);
+        }
+
+        .header a:hover {
+            color: #f0f0f0;
+        }
+
+        /* Main Content Styles */
+        .privacy-content {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+        }
+
+        .privacy-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .privacy-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            transition: transform var(--transition-speed);
+            border: 1px solid #eee;
+        }
+
+        .privacy-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .privacy-section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .privacy-section h2 i {
+            color: var(--accent-color);
+        }
+
+        .privacy-section h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .privacy-section p {
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+
+        .privacy-section ul {
+            margin: 1.2rem 0 1.2rem 2rem;
+            list-style-type: none;
+        }
+
+        .privacy-section li {
+            margin-bottom: 0.8rem;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .privacy-section li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 1px solid #dee2e6;
+        }
+
+        .contact-info h2 {
+            color: var(--primary-color);
+            border-bottom: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #666;
+            margin-top: 3rem;
+            font-style: italic;
+            padding: 1rem;
+            background-color: var(--background-light);
+            border-radius: 6px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Navigation Menu */
+        .privacy-nav {
+            position: fixed;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .privacy-nav ul {
+            list-style: none;
+        }
+
+        .privacy-nav li {
+            margin: 0.5rem 0;
+        }
+
+        .privacy-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-speed);
+        }
+
+        .privacy-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (min-width: 1400px) {
+            .privacy-nav {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .privacy-content {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .privacy-header {
+                padding: 1.5rem;
+            }
+
+            .privacy-header h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-section {
+                padding: 1.5rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><a href="index.html">The Cozy Corner</a></h1>
+    </header>
+
+    <nav class="privacy-nav">
+        <ul>
+            <li><a href="#information">Information We Collect</a></li>
+            <li><a href="#usage">How We Use Information</a></li>
+            <li><a href="#sharing">Information Sharing</a></li>
+            <li><a href="#security">Data Security</a></li>
+            <li><a href="#rights">Your Rights</a></li>
+            <li><a href="#cookies">Cookies Policy</a></li>
+            <li><a href="#children">Children's Privacy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <main class="privacy-content">
+        <div class="privacy-header">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy matters to us. Learn how we collect, protect, and respect your personal information.</p>
+        </div>
+
+        <div id="information" class="privacy-section">
+            <h2><i class="fas fa-info-circle"></i> 1. Information We Collect</h2>
+            <p>We collect information to provide better services to our customers. This includes:</p>
+            <ul>
+                <li>Personal information (name, email address, phone number)</li>
+                <li>Delivery address and billing information</li>
+                <li>Order history and preferences</li>
+                <li>Device information and IP address</li>
+                <li>Website usage data through cookies and similar technologies</li>
+            </ul>
+        </div>
+
+        <div id="usage" class="privacy-section">
+            <h2><i class="fas fa-tasks"></i> 2. How We Use Your Information</h2>
+            <p>We use the collected information for:</p>
+            <ul>
+                <li>Processing and delivering your orders</li>
+                <li>Communicating about your orders and services</li>
+                <li>Sending promotional emails and newsletters (with your consent)</li>
+                <li>Improving our website and services</li>
+                <li>Personalizing your experience</li>
+                <li>Analyzing usage patterns and trends</li>
+            </ul>
+        </div>
+
+        <div id="sharing" class="privacy-section">
+            <h2><i class="fas fa-share-alt"></i> 3. Information Sharing</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties. We may share your information with:</p>
+            <ul>
+                <li>Delivery partners to fulfill your orders</li>
+                <li>Payment processors for secure transactions</li>
+                <li>Service providers who assist our operations</li>
+                <li>Law enforcement when required by law</li>
+            </ul>
+        </div>
+
+        <div id="security" class="privacy-section">
+            <h2><i class="fas fa-shield-alt"></i> 4. Data Security</h2>
+            <p>We implement appropriate security measures to protect your personal information:</p>
+            <ul>
+                <li>SSL encryption for data transmission</li>
+                <li>Secure storage systems</li>
+                <li>Regular security assessments</li>
+                <li>Limited access to personal information by employees</li>
+            </ul>
+        </div>
+
+        <div id="rights" class="privacy-section">
+            <h2><i class="fas fa-user-shield"></i> 5. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal information</li>
+                <li>Correct inaccurate information</li>
+                <li>Request deletion of your information</li>
+                <li>Opt-out of marketing communications</li>
+                <li>Withdraw consent for data processing</li>
+            </ul>
+        </div>
+
+        <div id="cookies" class="privacy-section">
+            <h2><i class="fas fa-cookie-bite"></i> 6. Cookies Policy</h2>
+            <p>We use cookies to:</p>
+            <ul>
+                <li>Remember your preferences</li>
+                <li>Understand website usage patterns</li>
+                <li>Improve site functionality</li>
+                <li>Provide personalized content</li>
+            </ul>
+            <p>You can control cookie settings through your browser preferences.</p>
+        </div>
+
+        <div id="children" class="privacy-section">
+            <h2><i class="fas fa-child"></i> 7. Children's Privacy</h2>
+            <p>Our services are not intended for children under 13. We do not knowingly collect information from children under 13 years of age.</p>
+        </div>
+
+        <div id="contact" class="contact-info">
+            <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+            <p>If you have questions about this Privacy Policy, please contact us:</p>
+            <ul>
+                <li>Email: privacy@cozycorner.com</li>
+                <li>Phone: (555) 123-4567</li>
+                <li>Address: 123 Comfort Street, Foodie City, FC 12345</li>
+            </ul>
+        </div>
+
+        <p class="last-updated">Last Updated: November 25, 2024</p>
+    </main>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Show/hide back to top button based on scroll position
+        window.onscroll = function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        };
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

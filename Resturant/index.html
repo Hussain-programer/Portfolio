@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta
+      name="description"
+      content="The Cozy Corner | Modern Comfort Food - Fresh ingredients, thoughtful portions, delivered with care."
+    />
+    <title>The Cozy Corner | Modern Comfort Food</title>
+    <link rel="shortcut icon" href="./img/hero.jpg" type="image/x-icon" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      h1 a {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.2s ease;
+      }
+
+      h1 a:hover {
+        color: #666;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+        <h1><a href="#hero">The Cozy Corner</a></h1>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#testimonials">Testimonial</a></li>
+            <li><a href="#events-offers">Events & Offers</a></li>
+            <li><a href="#subscription">Subscribe</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <div class="cart-badge" onclick="viewCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cart-count">0</span>
+    </div>
+
+    <section id="hero">
+      <img
+        src="./img/hero.jpg"
+        alt="Beautiful restaurant interior"
+        class="hero-image"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Modern Comfort Food, Mindfully Prepared</h2>
+        <p>Fresh ingredients. Thoughtful portions. Delivered with care.</p>
+        <div class="cta-buttons">
+          <button class="button" onclick="scrollToMenu()">View Menu</button>
+          <button class="button secondary" onclick="makeReservation()"><a href="./reserve.html">Reserve a Table</a></button>
+
+        </div>
+      </div>
+    </section>
+    <!-- Reservation -->
+     
+      <!-- Menu Section -->
+    <section id="menu">
+      <h2 style="text-align: center; margin: 3rem 0">Our Menu</h2>
+
+      <!-- Menu Categories Navigation -->
+      <div style="text-align: center; margin-bottom: 3rem">
+        <button class="button secondary" onclick="filterMenu('all')">
+          All
+        </button>
+        <button class="button secondary" onclick="filterMenu('starters')">
+          Starters
+        </button>
+        <button class="button secondary" onclick="filterMenu('mains')">
+          Mains
+        </button>
+        <button class="button secondary" onclick="filterMenu('bowls')">
+          Bowls
+        </button>
+        <button class="button secondary" onclick="filterMenu('desserts')">
+          Desserts
+        </button>
+        <button class="button secondary" onclick="filterMenu('drinks')">
+          Drinks
+        </button>
+        <button class="button secondary" onclick="filterMenu('sides')">
+          Sides
+        </button>
+        <button class="button secondary" onclick="filterMenu('snacks')">
+          Snacks
+        </button>
+      </div>
+
+      <div class="menu-grid" id="menu-grid">
+        <!-- Starters -->
+        <div class="card menu-item" data-category="starters">
+          <img src="./img/Avocado Toast.jpg" alt="Avocado Toast" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Artisanal Avocado Toast</h3>
+                <span class="menu-item-calories">280 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$12</div>
+            </div>
+            <p>Sourdough, smashed avocado, microgreens, cherry tomatoes</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Artisanal Avocado Toast', 12)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="starters">
+          <img src="./img/Sweet Potato Soup.jpg" alt="Sweet Potato Soup" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Roasted Sweet Potato Soup</h3>
+                <span class="menu-item-calories">220 cal</span>
+                <span class="health-tag">Gluten-Free</span>
+              </div>
+              <div>$9</div>
+            </div>
+            <p>
+              A comforting and nourishing sweet potato soup, perfect for a
+              chilly day.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Roasted Sweet Potato Soup', 9)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="starters">
+          <img src="./img/Red Peas Soup.jpg" alt="Red Peas Soup" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Red Peas Soup</h3>
+                <span class="menu-item-calories">220 cal</span>
+                <span class="health-tag">Gluten-Free</span>
+              </div>
+              <div>$9</div>
+            </div>
+            <p>Kidney Beans, Allspice, Coconut Milk, Beef,etc</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Roasted Sweet Potato Soup', 9)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <!-- Mains -->
+        <div class="card menu-item" data-category="mains">
+          <img src="./img/Grilled Chicken.jpg" alt="Grilled Chicken" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Herb-Grilled Chicken</h3>
+                <span class="menu-item-calories">450 cal</span>
+                <span class="health-tag">High Protein</span>
+              </div>
+              <div>$22</div>
+            </div>
+            <p>Free-range chicken, fresh herbs, roasted vegetables</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Herb-Grilled Chicken', 22)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="mains">
+          <img src="./img/Grilled  Salmon.jpg" alt="Grilled Salmon" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Grilled Wild Salmon</h3>
+                <span class="menu-item-calories">520 cal</span>
+                <span class="health-tag">Omega-3 Rich</span>
+              </div>
+              <div>$24</div>
+            </div>
+            <p>Sustainably sourced salmon, quinoa, seasonal vegetables</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Grilled Wild Salmon', 24)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="mains">
+          <img src="./img/Beef Lo Mein.jpg" alt="Beef Lo Mein" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Beef Lo Mein</h3>
+                <span class="menu-item-calories">520 cal</span>
+                <span class="health-tag">Omega-3 Rich</span>
+              </div>
+              <div>$24</div>
+            </div>
+            <p>
+              A flavorful and satisfying Beef Lo Mein, perfect for a quick and
+              easy weeknight meal.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Grilled Wild Salmon', 24)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <!-- Bowls -->
+        <div class="card menu-item" data-category="bowls">
+          <img src="./img/Quinoa Power Bowl.jpg" alt="Quinoa Bowl" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Quinoa Power Bowl</h3>
+                <span class="menu-item-calories">450 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$16</div>
+            </div>
+            <p>Mixed quinoa, roasted vegetables, avocado, tahini dressing</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Quinoa Power Bowl', 16)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="bowls">
+          <img src="./img/Buddha Bowl.jpg" alt="Buddha Bowl" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Buddha Bowl</h3>
+                <span class="menu-item-calories">380 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$17</div>
+            </div>
+            <p>Brown rice, edamame, roasted chickpeas, kale, miso dressing</p>
+            <button class="button" onclick="openOrderModal('Buddha Bowl', 17)">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="bowls">
+          <img src="./img/Ahi Tuna Poke Bowl.jpg" alt="Poke Bowl" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Ahi Tuna Poke Bowl</h3>
+                <span class="menu-item-calories">420 cal</span>
+                <span class="health-tag">High Protein</span>
+              </div>
+              <div>$19</div>
+            </div>
+            <p>Sushi-grade tuna, brown rice, seaweed, avocado</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Ahi Tuna Poke Bowl', 19)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <!-- Desserts -->
+        <div class="card menu-item" data-category="desserts">
+          <img src="./img/Berry Chia Pudding.jpg" alt="Chia Pudding" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Berry Chia Pudding</h3>
+                <span class="menu-item-calories">220 cal</span>
+                <span class="health-tag">Gluten-Free</span>
+              </div>
+              <div>$8</div>
+            </div>
+            <p>Coconut milk chia pudding, mixed berries, honey</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Berry Chia Pudding', 8)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="desserts">
+          <img src="./img/Banana Nice Cream.jpg" alt="Nice Cream" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Banana Nice Cream</h3>
+                <span class="menu-item-calories">180 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>Frozen banana ice cream, cacao nibs, almond butter</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Banana Nice Cream', 7)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="desserts">
+          <img src="./img/Raw Cashew Cheesecake.jpg" alt="Raw Cheesecake" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Raw Cashew Cheesecake</h3>
+                <span class="menu-item-calories">290 cal</span>
+                <span class="health-tag">Raw Vegan</span>
+              </div>
+              <div>$9</div>
+            </div>
+            <p>Cashew-based, date-walnut crust, berry compote</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Raw Cashew Cheesecake', 9)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="desserts">
+          <img
+            src="./img/Tunisian Orange Cake.jpg"
+            alt="Tunisian Orange Cake"
+          />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Tunisian Orange Cake</h3>
+                <span class="menu-item-calories">180 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>A zesty and moist orange cake, perfect for any occasion.</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Banana Nice Cream', 7)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="desserts">
+          <img
+            src="./img/Peach & Blueberry Grunt.jpg"
+            alt="Peach & Blueberry Grunt"
+          />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Peach & Blueberry Grunt</h3>
+                <span class="menu-item-calories">180 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>
+              A warm and comforting peach and blueberry dessert, perfect for any
+              season.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Banana Nice Cream', 7)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="desserts">
+          <img
+            src="./img/Christmas Pudding Flapjack.jpg"
+            alt="Christmas Pudding Flapjack"
+          />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Christmas Pudding Flapjack</h3>
+                <span class="menu-item-calories">180 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>
+              A festive twist on a classic treat, combining the flavors of
+              Christmas pudding with the chewy goodness of flapjacks.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Banana Nice Cream', 7)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <!-- Drinks -->
+        <div class="card menu-item" data-category="drinks">
+          <img
+            src="./img/Tropical Paradise.jpg"
+            alt=" Non-Alcoholic Mocktail"
+          />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Tropical Paradise</h3>
+                <span class="menu-item-calories">220 cal</span>
+                <span class="health-tag">Gluten-Free</span>
+              </div>
+              <div>$8</div>
+            </div>
+            <p>
+              A refreshing and vibrant drink made with pineapple juice, coconut
+              milk, and a hint of lime, served over ice and garnished with fresh
+              fruit.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Berry Chia Pudding', 8)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="drinks">
+          <img src="./img/Dark Roast Espresso.jpg" alt="Classic Coffee" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Dark Roast Espresso</h3>
+                <span class="menu-item-calories">180 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>A rich and bold espresso, perfect for coffee lovers.</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Banana Nice Cream', 7)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="drinks">
+          <img src="./img/Doodh Patti.jpg" alt="Doodh Patti" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Doodh Patti</h3>
+                <span class="menu-item-calories">290 cal</span>
+                <span class="health-tag">Raw Vegan</span>
+              </div>
+              <div>$9</div>
+            </div>
+            <p>
+              A popular tea drink made with milk, sugar, and strong black tea.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Raw Cashew Cheesecake', 9)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <!-- Sides -->
+        <div class="card menu-item" data-category="sides">
+          <img src="./img/Vegetarian Chilli.jpg" alt="Roasted Vegetables" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Vegetarian Chilli</h3>
+                <span class="menu-item-calories">120 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$6</div>
+            </div>
+            <p>
+              A hearty and flavorful vegetarian chili, perfect for a cozy meal.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Roasted Vegetables', 6)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="sides">
+          <img src="./img/Sweet Potato Fries.jpg" alt="Sweet Potato Fries" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Sweet Potato Fries</h3>
+                <span class="menu-item-calories">200 cal</span>
+                <span class="health-tag">Gluten-Free</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>Crispy sweet potato fries served with a side of ketchup</p>
+            <button
+              class="button"
+              onclick="openOrderModal('Sweet Potato Fries', 7)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="sides">
+          <img
+            src="./img/Vegetarian Casserole.jpg"
+            alt="Vegetarian Casserole"
+          />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Vegetarian Casserole</h3>
+                <span class="menu-item-calories">200 cal</span>
+                <span class="health-tag">Gluten-Free</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>
+              A comforting and hearty vegetarian casserole, perfect for a cozy
+              meal.
+            </p>
+            <button
+              class="button"
+              onclick="openOrderModal('Sweet Potato Fries', 7)"
+            >
+              Order Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Snacks -->
+        <div class="card menu-item" data-category="snacks">
+          <img src="./img/Loaded Nachos.jpg" alt="Loaded Nachos" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Loaded Nachos</h3>
+                <span class="menu-item-calories">120 cal</span>
+                <span class="health-tag">Vegan</span>
+              </div>
+              <div>$6</div>
+            </div>
+            <p>A delicious and healthy snack, perfect for any time of day.</p>
+            <button class="button" onclick="openOrderModal('Snake1', 6)">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="snacks">
+          <img src="./img/Masala Fries.jpg" alt="Masala Fries" />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Masala Fries</h3>
+                <span class="menu-item-calories">150 cal</span>
+                <span class="health-tag">Gluten-Free</span>
+              </div>
+              <div>$7</div>
+            </div>
+            <p>
+              A tasty and satisfying snack, made with the freshest ingredients.
+            </p>
+            <button class="button" onclick="openOrderModal('Snake2', 7)">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="card menu-item" data-category="snacks">
+          <img
+            src="./img/Chicken Tikka Sliders.jpg"
+            alt="Chicken Tikka Sliders"
+          />
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <div>
+                <h3>Chicken Tikka Sliders</h3>
+                <span class="menu-item-calories">180 cal</span>
+                <span class="health-tag">Raw Vegan</span>
+              </div>
+              <div>$8</div>
+            </div>
+            <p>
+              A healthy and delicious snack, perfect for a quick energy boost.
+            </p>
+            <button class="button" onclick="openOrderModal('Snake3', 8)">
+              Order Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- Features Section -->
+    <section id="features">
+      <h2 style="text-align: center">Why Choose Us</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Fresh & Organic</h3>
+          <p>Locally sourced ingredients, prepared daily</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Health Focused</h3>
+          <p>Nutritious meals for your wellbeing</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Fast Delivery</h3>
+          <p>Quick and reliable delivery service</p>
+        </div>
+      </div>
+    </section>
+<!-- Testimonial Section -->
+<section id="testimonials">
+  <h2 style="text-align: center; margin: 3rem 0">What Our Customers Say</h2>
+  <div class="testimonial-container">
+      <div class="testimonial-card">
+          <p>"The Cozy Corner has the best avocado toast I've ever had! Fresh ingredients and great service!"</p>
+          <span>- Sarah J.</span>
+          <a href="#">Read more on Yelp</a>
+      </div>
+      <div class="testimonial-card">
+          <p>"A delightful dining experience! The herb-grilled chicken is a must-try!"</p>
+          <span>- Mark T.</span>
+          <a href="#">Read more on Google</a>
+      </div>
+      <div class="testimonial-card">
+          <p>"I can't get enough of their quinoa power bowl! Healthy and delicious!"</p>
+          <span>- Emily R.</span>
+          <a href="#">Read more on TripAdvisor</a>
+      </div>
+  </div>
+</section>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <h3 id="modalItemName"></h3>
+        <p id="modalItemPrice"></p>
+        <div class="quantity-controls">
+          <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
+          <span id="quantity">1</span>
+          <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
+        </div>
+        <div class="modal-buttons">
+          <button class="button" onclick="addToCart()">Add to Cart</button>
+          <button class="button secondary" onclick="closeModal()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Events section -->
+    <section id="events-offers">
+      <h2 style="text-align: center; margin: 3rem 0">Events & Offers</h2>
+      <div class="events-container">
+          <div class="event-card">
+              <h3>Live Music Night</h3>
+              <p>Join us every Friday at 7 PM for live music from local artists!</p>
+              <span>Date: Every Friday</span>
+          </div>
+          <div class="event-card">
+              <h3>Food Festival</h3>
+              <p>Don't miss our annual food festival on December 15th! Enjoy special dishes and discounts.</p>
+              <span>Date: December 15</span>
+          </div>
+          <div class="offer-card">
+              <h3>Happy Hour Specials</h3>
+              <p>Enjoy 50% off on selected drinks from 5 PM to 7 PM every weekday!</p>
+          </div>
+          <div class="offer-card">
+              <h3>Loyalty Program</h3>
+              <p>Subscribe for our loyalty program and earn points for every dollar spent!</p>
+          </div>
+      </div>
+  </section>
+    <!-- subscription Section -->
+    <section id="subscription" class="subscription-section">
+      <div class="subscription-container">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p class="subscription-desc">
+          Stay updated with our latest menu items, special offers, and wellness
+          tips!
+        </p>
+
+        <div class="subscription-plans">
+          <div class="plan-card">
+            <h3>Weekly Newsletter</h3>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Weekly Menu Updates</li>
+              <li><i class="fas fa-check"></i> Exclusive Recipes</li>
+              <li><i class="fas fa-check"></i> Seasonal Specials</li>
+            </ul>
+            <button class="button" onclick="subscribe('weekly')">
+              Subscribe Free
+            </button>
+          </div>
+
+          <div class="plan-card featured">
+            <div class="featured-badge">Popular</div>
+            <h3>Premium Membership</h3>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> All Weekly Benefits</li>
+              <li><i class="fas fa-check"></i> 10% Off All Orders</li>
+              <li><i class="fas fa-check"></i> Priority Delivery</li>
+              <li><i class="fas fa-check"></i> Monthly Cooking Classes</li>
+            </ul>
+            <button class="button" onclick="subscribe('premium')">
+              Join for $9.99/mo
+            </button>
+          </div>
+
+          <div class="plan-card">
+            <h3>Digital Menu Access</h3>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Daily Menu Updates</li>
+              <li><i class="fas fa-check"></i> Nutritional Information</li>
+              <li><i class="fas fa-check"></i> Mobile App Access</li>
+            </ul>
+            <button class="button" onclick="subscribe('digital')">
+              Get Access
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="contact-container">
+        <h2>Get in Touch</h2>
+        <p class="contact-desc">
+          Have questions? We'd love to hear from you. Send us a message and
+          we'll respond as soon as possible.
+        </p>
+
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h3>Location</h3>
+                <p>123 Comfort Street<br />Foodie City, FC 12345</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h3>Phone</h3>
+                <p>(555) 123-4567</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h3>Email</h3>
+                <p>hello@cozycorner.com</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h3>Hours</h3>
+                <p>
+                  Mon-Fri: 9:00 AM - 10:00 PM<br />
+                  Sat-Sun: 10:00 AM - 11:00 PM
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <form
+            class="contact-form"
+            id="contactForm"
+            onsubmit="submitForm(event)"
+          >
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group full-width">
+                <button type="submit" class="button">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>About Us</h4>
+            <p>The Cozy Corner is your destination for modern comfort food. We believe in using fresh, locally-sourced ingredients to create wholesome meals that nourish both body and soul.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+      
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#menu">Our Menu</a></li>
+              <li><a href="#features">Why Choose Us</a></li>
+              <li><a href="#subscription">Subscribe</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#events-offers">Special Offers</a></li>
+              <li><a href="./privacy.html">Privacy Policy</a></li>
+              <li><a href="./terms.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-section">
+            <h4>Opening Hours</h4>
+            <ul>
+              <li>Monday - Friday: 9:00 AM - 10:00 PM</li>
+              <li>Saturday - Sunday: 10:00 AM - 11:00 PM</li>
+              <li>Holiday Hours May Vary</li>
+            </ul>
+          </div>
+      
+          <div class="footer-section">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter for updates, special offers, and exclusive recipes!</p>
+            <form class="footer-subscribe">
+              <input type="email" placeholder="Your email address" class="p-2 w-full mb-2 border rounded">
+              <button type="submit" class="button w-full">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      
+        <div class="footer-bottom">
+          <p>&copy; 2024 The Cozy Corner. All rights reserved.</p>
+          <p>Designed with <i class="fas fa-heart" style="color: #f8b400;"></i> for food lovers</p>
+        </div>
+      </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

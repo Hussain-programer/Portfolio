@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cozy Corner - Restaurant Reservation</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    --secondary-gradient: linear-gradient(135deg, #FF416C 0%, #FF4B2B 100%);
+    --text-primary: #2c3e50;
+    --text-secondary: #34495e;
+    --transition-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    perspective: 1000px;
+}
+
+.header {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h1 a {
+    color: white;
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s var(--transition-bezier);
+    position: relative;
+    display: inline-block;
+}
+
+.header h1 a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ffd700;
+    transition: width 0.3s var(--transition-bezier);
+}
+
+.header h1 a:hover {
+    color: #ffd700;
+    transform: translateY(-2px);
+}
+
+.header h1 a:hover::after {
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+    position: relative;
+}
+
+.reservation-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+    max-width: 650px;
+    width: 100%;
+    margin: 2rem auto;
+    transform-style: preserve-3d;
+    transition: transform 0.5s var(--transition-bezier);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.reservation-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+}
+
+.reservation-card h2 {
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.reservation-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-gradient);
+    border-radius: 3px;
+}
+
+.button {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.4s var(--transition-bezier);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+    transform: translateX(-100%) rotate(45deg);
+    transition: transform 0.6s var(--transition-bezier);
+}
+
+.primary {
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(33, 147, 176, 0.3);
+}
+
+.primary:hover::before {
+    transform: translateX(100%) rotate(45deg);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s var(--transition-bezier);
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 5% auto;
+    padding: 2.5rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    transform: translateY(-30px) scale(0.95);
+    opacity: 0;
+    transition: all 0.5s var(--transition-bezier);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal.show .modal-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s var(--transition-bezier);
+    background-color: rgba(248, 249, 250, 0.8);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #2193b0;
+    box-shadow: 0 0 0 4px rgba(33, 147, 176, 0.1);
+    background-color: white;
+}
+
+.form-group input:focus + label,
+.form-group select:focus + label {
+    color: #2193b0;
+}
+
+.success-message {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateX(120%);
+    transition: transform 0.5s var(--transition-bezier);
+    z-index: 1001;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.success-message.show {
+    transform: translateX(0) scale(1);
+    animation: bounce 0.5s var(--transition-bezier);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(0) scale(1.05); }
+}
+
+@media (max-width: 768px) {
+    .header h1 a {
+        font-size: 1.8rem;
+    }
+
+    .modal-content {
+        margin: 15% auto;
+        padding: 2rem;
+    }
+
+    .reservation-card {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+
+    .success-message {
+        right: 20px;
+        left: 20px;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><a href="./index.html">The Cozy Corner</a></h1>
+    </header>
+
+    <main class="main-content">
+        <div class="reservation-card">
+            <h2>Book Your Table</h2>
+            <button class="button primary" onclick="makeReservation()">
+                Make a Reservation
+            </button>
+        </div>
+    </main>
+
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Make a Reservation</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="reservationForm" onsubmit="submitReservation(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        required 
+                        pattern="^[a-zA-Z\s]{2,}$"
+                        oninvalid="this.nextElementSibling.style.display='block'"
+                        oninput="this.nextElementSibling.style.display='none'"
+                    >
+                    <div class="error-message">Please enter a valid name (minimum 2 characters, letters only)</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        required
+                        oninvalid="this.nextElementSibling.style.display='block'"
+                        oninput="this.nextElementSibling.style.display='none'"
+                    >
+                    <div class="error-message">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input 
+                        type="date" 
+                        id="date" 
+                        required
+                        min=""
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="time">Preferred Time</label>
+                    <input 
+                        type="time" 
+                        id="time" 
+                        required
+                        min="11:00"
+                        max="22:00"
+                    >
+                    <div class="error-message">Restaurant hours are 11:00 AM to 10:00 PM</div>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <select id="guests" required>
+                        <option value="" disabled selected>Select number of guests</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5">5 People</option>
+                        <option value="6">6 People</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="special">Special Requests (Optional)</label>
+                    <input type="text" id="special" placeholder="Any dietary restrictions or special occasions?">
+                </div>
+                <button type="submit" class="button primary">Confirm Reservation</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="successMessage" class="success-message">
+        Reservation confirmed successfully!
+    </div>
+
+    <script>
+        // Set minimum date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+
+        function makeReservation() {
+            const modal = document.getElementById('reservationModal');
+            modal.style.display = 'block';
+            // Trigger reflow
+            modal.offsetHeight;
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('reservationModal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.getElementById('reservationForm').reset();
+                // Reset error messages
+                document.querySelectorAll('.error-message').forEach(err => {
+                    err.style.display = 'none';
+                });
+            }, 300);
+        }
+
+        function submitReservation(event) {
+            event.preventDefault();
+            
+            // Validate time
+            const timeInput = document.getElementById('time');
+            const time = timeInput.value;
+            if (time < '11:00' || time > '22:00') {
+                timeInput.nextElementSibling.style.display = 'block';
+                return;
+            }
+
+            // Get form values
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                date: document.getElementById('date').value,
+                time: time,
+                guests: document.getElementById('guests').value,
+                special: document.getElementById('special').value
+            };
+
+            // Here you would typically send this data to your server
+            console.log('Reservation Details:', formData);
+
+            // Show success message
+            closeModal();
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('reservationModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
