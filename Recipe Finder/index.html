@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Nuskha-e-Zaiqa - Recipe Finder, a web application that allows users to search and discover new recipes based on ingredients, names, or IDs.">
-    <title>Nuskha-e-Zaiqa</title>
+    <meta name="description" content="Explore the rich flavors of South Asian cuisine with Desi Kitchen Chronicles, your ultimate recipe guide. Discover new recipes, cooking techniques, and more.">
+    <title>Desi Kitchen Chronicles</title>
+    <link rel="shortcut icon" href="fav.jpg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Nuskha-e-Zaiqa</h1>
-        </header>
-        <div class="search-options">
+    <header>
+        <div class="logo">🍲 Desi Kitchen Chronicles</div>
+        <p>Discover the Rich Flavors of South Asian Cuisine</p>
+    </header>
+    <div class="search-controls">
+        <div class="search-types">
             <button class="search-type-btn active" data-type="ingredient">Search by Ingredient</button>
             <button class="search-type-btn" data-type="name">Search by Name</button>
-            <button class="search-type-btn" data-type="id">Search by ID</button>
             <button class="search-type-btn random-btn" onclick="getRandomRecipe()">Random Recipe</button>
         </div>
-
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Enter search term...">
-            <div class="search-suggestions" id="searchSuggestions"></div>
-            <button onclick="performSearch()">Search</button>
-        </div>
-        <div class="filters">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search for recipes...">
+        <div class="filter-buttons">
             <button class="filter-btn active" onclick="toggleView('all')">All Recipes</button>
             <button class="filter-btn" onclick="toggleView('favorites')">Favorites</button>
         </div>
-
-        <div class="loading" id="loading">Scanning Universal Recipe Database...</div>
-        <div class="recipes-grid" id="recipesGrid"></div>
     </div>
 
-    <div class="modal" id="recipeModal">
+    <div id="loading" class="loading" style="display: none;">Searching for recipes...</div>
+    <div id="recipesGrid" class="recipes-grid"></div>
+
+    <div id="recipeModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <div id="modalContent"></div>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalContent" class="recipe-details"></div>
         </div>
     </div>
-<script src="script.js"></script>
+<button class="theme-switcher" id="themeSwitcher" aria-label="Toggle theme">
+        <span class="theme-icon">🌓</span>
+    </button>
+    <script src="script.js"></script>
 </body>
 </html>
